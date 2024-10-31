@@ -2,6 +2,7 @@ package com.harry.sdk3010webview
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.KeyEvent
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +15,7 @@ import com.harry.webview.WebClientClass
 
 class MainActivity : AppCompatActivity() {
     private lateinit var wSettings: WebSettings
+    private lateinit var webView: WebView
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val webView: WebView = findViewById(R.id.webview)
+        webView = findViewById(R.id.webview)
         webView.loadUrl("https://www.google.com")
         webView.isClickable = true
 
@@ -41,5 +43,21 @@ class MainActivity : AppCompatActivity() {
         webView.loadUrl("file:///android_asset/web/index.html");
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
 
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (event.action == KeyEvent.ACTION_DOWN) {
+            when (keyCode) {
+                KeyEvent.KEYCODE_BACK -> {
+                    if (webView.canGoBack()) {
+                        webView.goBack()
+                    } else {
+                        finish()
+                    }
+                    return true
+                }
+            }
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
