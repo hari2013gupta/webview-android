@@ -8,11 +8,8 @@ on:
 
 jobs:
   build:
-
     name: Android Build & Test
     runs-on: macOS-latest
-
-    needs: build
 
     steps:
     - name: Clone Repository
