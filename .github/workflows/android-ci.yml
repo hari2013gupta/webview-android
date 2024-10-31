@@ -1,5 +1,24 @@
 name: Android CI
 
+#env:
+#  # The name of the main module repository
+#  main_project_module: app
+#
+#  # The name of the Play Store
+#  playstore_name: Frogobox ID
+#
+#  # Keystore Path
+#  ks_path: frogoboxdev.jks
+#
+#  # Keystore Password
+#  ks_store_pass: cronoclez
+#
+#  # Keystore Alias
+#  ks_alias: frogobox
+#
+#  # Keystore Alias Password
+#  ks_alias_pass: xeonranger
+
 on:
   push:
     branches: [ "main" ]
@@ -21,7 +40,7 @@ jobs:
 
     steps:
       - name: Clean all artifacts
-        uses: c-hive/gha-remove-artifacts@v4
+        uses: c-hive/gha-remove-artifacts@v1
         with:
           age: '60 seconds' # '<number> <unit>', e.g. 5 days, 2 years, 90 seconds, parsed by Moment.js
           # Optional inputs
@@ -95,26 +114,26 @@ jobs:
 #        run: ./gradlew app:bundleRelease
 
         # Github release
-      - name: Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          release_name: Release v.${{ env.VERSION_NAME }}
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload Release APK
-        id: upload_release_asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/release/app-release.apk
-          asset_name: signed-artifact.apk
-          asset_content_type: application/zip
+#      - name: Release
+#        id: create_release
+#        uses: actions/create-release@v1
+#        with:
+#          release_name: Release v.${{ env.VERSION_NAME }}
+#          draft: false
+#          prerelease: false
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Upload Release APK
+#        id: upload_release_asset
+#        uses: actions/upload-release-asset@v1.0.1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          upload_url: ${{ steps.create_release.outputs.upload_url }}
+#          asset_path: app/build/outputs/apk/release/app-release.apk
+#          asset_name: signed-artifact.apk
+#          asset_content_type: application/zip
 
 #    - name: Deploy to Play Store
 #      uses: r0adkll/upload-google-play@v1
