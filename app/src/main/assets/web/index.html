@@ -5,10 +5,16 @@
     <title>Local web page</title>
 </head>
 <body>
-<input type="button" value="Show Dialog" onClick="showAndroidToast('This is Js Alert.')"/>
+<br/>
+<input type="button" value="Show Toast" onClick="showAndroidToast('This is Js Toast.')"/>
+<br/>
+<input type="button" value="Show Dialog" onClick="showAndroidAlert('This is Js Alert.')"/>
 <script type="text/javascript">
     function showAndroidToast(toast) {
-        Android.showAlert(toast);
+        Android.showToast(toast);
+    }
+    function showAndroidAlert(message) {
+        Android.showAlert(message);
     }
 </script>
 </body>
