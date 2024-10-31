@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Clean all artifacts
-        uses: c-hive/gha-remove-artifacts@v1
+        uses: c-hive/gha-remove-artifacts@v4
         with:
           age: '60 seconds' # '<number> <unit>', e.g. 5 days, 2 years, 90 seconds, parsed by Moment.js
           # Optional inputs
@@ -75,13 +75,9 @@ jobs:
         run: ./gradlew test
       - name: Gradle Test Stacktrace
         run: ./gradlew test --stacktrace
-      - name: Run Ktlint
-        run: ./gradlew ktlintStagingDebugCheck
       - name: Run Linters and Test
         run: ./gradlew check
 
-      - name: Run Unit Tests Staging
-        run: ./gradlew testStagingDebugUnitTest
       - name: Run Unit Tests Debug
         run: ./gradlew testDebugUnitTest
 
