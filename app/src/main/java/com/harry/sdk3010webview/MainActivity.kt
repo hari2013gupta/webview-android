@@ -8,10 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.harry.sdk3010webview.webview.WebAppInterface
-import com.harry.sdk3010webview.webview.WebChromeClass
-import com.harry.sdk3010webview.webview.WebClientClass
-
+import com.harry.webview.WebAppInterface
+import com.harry.webview.WebChromeClass
+import com.harry.webview.WebClientClass
 
 class MainActivity : AppCompatActivity() {
     private lateinit var wSettings: WebSettings
@@ -27,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val webView: WebView = findViewById(R.id.webview)
-//        webView.loadUrl("https://www.google.com")
+        webView.loadUrl("https://www.google.com")
         webView.isClickable = true
 
         wSettings = webView.settings
@@ -41,5 +40,6 @@ class MainActivity : AppCompatActivity() {
          */
         webView.loadUrl("file:///android_asset/web/index.html");
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
+
     }
 }

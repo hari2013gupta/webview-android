@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    namespace = "com.harry.sdk3010webview"
+    namespace = "com.harry.webview"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.harry.sdk3010webview"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -40,10 +37,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
 
-    implementation(project(":libs:webview"))
+    implementation(libs.androidx.webkit)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
