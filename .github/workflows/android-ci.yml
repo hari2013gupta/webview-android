@@ -34,23 +34,21 @@ on:
     - cron: '0 1 * * *'
 
 jobs:
-  remove-old-artifacts:
-    runs-on: ubuntu-latest
+#  remove-old-artifacts:
+
+  build:
+    name: Android Build & Test
+    runs-on: macOS-latest
     timeout-minutes: 10
 
     steps:
       - name: Clean all artifacts
-        uses: c-hive/gha-remove-artifacts@v2
+        uses: c-hive/gha-remove-artifacts@v1
         with:
           age: '60 seconds' # '<number> <unit>', e.g. 5 days, 2 years, 90 seconds, parsed by Moment.js
           # Optional inputs
           # skip-tags: true
           # skip-recent: 5
-  build:
-    name: Android Build & Test
-    runs-on: macOS-latest
-
-    steps:
       - name: Clone Repository
         uses: actions/checkout@v4
 
