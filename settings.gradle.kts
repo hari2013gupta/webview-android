@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "sdk3010webview"
 include(":app")
 include(":libs:webview")
+//project(":libs:webview").name = "webview-lib"

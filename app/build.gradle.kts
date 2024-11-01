@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.harry.sdk3010webview"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.harry.sdk3010webview"
