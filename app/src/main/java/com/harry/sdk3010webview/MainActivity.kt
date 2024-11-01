@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         webView = findViewById(R.id.webview)
-        webView.loadUrl("https://www.google.com")
+//        webView.loadUrl("https://green-carmelle-86.tiiny.site")
         webView.isClickable = true
 
         wSettings = webView.settings
